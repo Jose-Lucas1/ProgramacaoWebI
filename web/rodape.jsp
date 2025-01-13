@@ -1,7 +1,7 @@
             </div>
         </main>
         <footer>
-            <div class="p-3 bg-light border-top text-dark text-center">&copy; <%= java.time.Year.now().getValue()%> smd-ecommerce - Todos os direitos reservados</div>
+            <div class="p-3 bg-light border-top text-dark text-center">&copy; <%= java.time.Year.now().getValue()%> Loja Geek ltda. - Todos os direitos reservados</div>
         </footer>
     </div>
     <script src="js/jquery-3.7.1.min.js" type="text/javascript"></script>

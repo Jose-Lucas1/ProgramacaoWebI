@@ -8,7 +8,7 @@ import static config.Constantes.JDBC_USUARIO;
 
 /**
  *
- * @author Leonardo Oliveira Moreira
+ * 
  *
  * Classe que implementa o padrão DAO para a entidade Usuario
  */

@@ -2,7 +2,7 @@ package modelo.produto;
 
 /**
  *
- * @author Leonardo Oliveira Moreira
+ * 
  * 
  * Classe que representa a entidade Produto
  */

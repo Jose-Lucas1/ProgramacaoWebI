@@ -2,7 +2,7 @@ package modelo.usuario;
 
 /**
  *
- * @author Leonardo Oliveira Moreira
+ * 
  * 
  * Classe que representa a entidade Usuario
  */

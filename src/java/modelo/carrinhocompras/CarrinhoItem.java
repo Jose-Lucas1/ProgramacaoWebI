@@ -4,7 +4,7 @@ import modelo.produto.Produto;
 
 /**
  *
- * @author Leonardo Oliveira Moreira
+ * 
  *
  * Classe que representa um item do carrinho de compras
  */

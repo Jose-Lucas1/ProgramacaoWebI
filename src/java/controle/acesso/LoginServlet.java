@@ -11,7 +11,7 @@ import modelo.usuario.Usuario;
 import modelo.usuario.UsuarioDAO;
 
 /*
- * @author Leonardo Oliveira Moreira
+ * 
  * 
  * Classe de controle para implementar a ação de login
  */

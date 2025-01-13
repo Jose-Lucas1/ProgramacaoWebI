@@ -13,7 +13,7 @@ import utils.Utils;
 
 /**
  *
- * @author Leonardo Oliveira Moreira
+ * 
  *
  * Classe de controle para implementar a ação de adicionar um item no carrinho
  * de compras

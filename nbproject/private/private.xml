@@ -3,22 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerce/src/java/controle/usuario/deletarUsuarioServlet.java</file>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerce/src/java/controle/usuario/atualizarDadosServlet.java</file>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerce/web/cabecalho.jsp</file>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerce/web/atualizarDados.jsp</file>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerce/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerce/src/java/controle/acesso/InicioServlet.java</file>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerce/src/java/controle/acesso/LogoutServlet.java</file>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerce/web/protegida.jsp</file>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerce/src/java/modelo/usuario/Usuario.java</file>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerce/src/java/controle/usuario/InserirClienteServlet.java</file>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerce/src/java/modelo/usuario/UsuarioDAO.java</file>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerce/src/java/controle/acesso/LoginServlet.java</file>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerce/web/index.jsp</file>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerce/web/login.jsp</file>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerce/web/cadastrarCliente.jsp</file>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerce/web/deletarUsuario.jsp</file>
+            <file>file:/C:/Users/emtav/Downloads/ProgramacaoWebI-SegundaEntrega/web/protegida.jsp</file>
+            <file>file:/C:/Users/emtav/Downloads/ProgramacaoWebI-SegundaEntrega/web/js/index.js</file>
+            <file>file:/C:/Users/emtav/Downloads/ProgramacaoWebI-SegundaEntrega/web/rodape.jsp</file>
+            <file>file:/C:/Users/emtav/Downloads/ProgramacaoWebI-SegundaEntrega/src/java/config/Constantes.java</file>
+            <file>file:/C:/Users/emtav/Downloads/ProgramacaoWebI-SegundaEntrega/web/login.jsp</file>
+            <file>file:/C:/Users/emtav/Downloads/ProgramacaoWebI-SegundaEntrega/web/index.jsp</file>
+            <file>file:/C:/Users/emtav/Downloads/ProgramacaoWebI-SegundaEntrega/web/cabecalho.jsp</file>
         </group>
     </open-files>
 </project-private>

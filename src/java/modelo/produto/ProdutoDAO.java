@@ -10,7 +10,7 @@ import java.sql.*;
 
 /**
  *
- * @author Leonardo Oliveira Moreira
+ * 
  *
  * Classe que implementa o padrão DAO para a entidade Produto
  */

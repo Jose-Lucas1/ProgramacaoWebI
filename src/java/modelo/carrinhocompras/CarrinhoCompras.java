@@ -10,7 +10,7 @@ import modelo.produto.ProdutoDAO;
 
 /**
  *
- * @author Leonardo Oliveira Moreira
+ * 
  *
  * Classe que implementa o fucionamento do carrinho de compras por meio de uma
  * string que é armazenameda como cookie

@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  *
- * @author Leonardo Oliveira Moreira
+ * 
  *
  * Classe para disponibilizar métodos utilitários para a aplicação
  */

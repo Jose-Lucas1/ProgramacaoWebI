@@ -10,7 +10,7 @@ import modelo.produto.ProdutoDAO;
 
 /**
  *
- * @author Leonardo Oliveira Moreira
+ * 
  *
  * Classe de controle para implementar a ação de inserir ou atualizar um produto
  */

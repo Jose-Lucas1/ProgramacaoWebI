@@ -10,7 +10,7 @@ import modelo.usuario.UsuarioDAO;
 
 /**
  *
- * @author Leonardo Oliveira Moreira
+ * 
  *
  * Classe de controle para a inserir um novo usuário do tipo cliente
  */
