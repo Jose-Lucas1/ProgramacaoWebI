@@ -1,0 +1,10 @@
+.card-img-top {
+    max-height: 200px; /* Altura máxima da imagem */
+    object-fit: contain; /* Ajusta para preencher o espaço sem distorcer ou cortar */
+    width: 100%; /* Garante que ocupe a largura do card */
+}
+.product-img-list {
+    max-height: 36px; /* Altura máxima da imagem */
+    object-fit: contain; /* Ajusta para preencher o espaço sem distorcer ou cortar */
+    max-width: 36px; /* Garante que ocupe a largura do card */
+}

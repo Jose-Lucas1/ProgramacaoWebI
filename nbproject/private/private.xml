@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerceV9/src/java/modelo/produto/Produto.java</file>
+            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerceV9/src/java/config/Constantes.java</file>
+            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerceV9/src/java/controle/produto/MostrarFotoProdutoServlet.java</file>
+            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerceV9/src/java/controle/produto/SalvarProdutoServlet.java</file>
+            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerceV9/src/java/modelo/usuario/UsuarioDAO.java</file>
+            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerceV9/src/java/modelo/produto/ProdutoDAO.java</file>
+            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerceV9/src/java/modelo/usuario/Usuario.java</file>
+            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerceV9/src/java/utils/Utils.java</file>
+            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerceV9/web/index.jsp</file>
+        </group>
+    </open-files>
+</project-private>
