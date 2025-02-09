@@ -1,11 +1,14 @@
 package controle.produto;
 
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.categoria.Categoria;
+import modelo.categoria.CategoriaDAO;
 import modelo.produto.Produto;
 import modelo.produto.ProdutoDAO;
 
@@ -21,6 +24,10 @@ public class FormProdutoServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        CategoriaDAO categoriaDAO = new CategoriaDAO();
+        List<Categoria> categorias = categoriaDAO.obterTodasCategorias();
+        request.setAttribute("categorias", categorias);
         /* entrada opcional de dados */
         String id = request.getParameter("id");
         /* processamento de dados */

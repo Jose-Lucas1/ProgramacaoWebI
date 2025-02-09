@@ -6,7 +6,16 @@
     <h1 class="fw-bolder fs-4">Cadastro de Produtos</h1>
     <%
         Produto produto = (Produto) request.getAttribute("produto");
-        List<Categoria> categorias = (List<Categoria>) request.getAttribute("categorias"); // List of categories
+        List<Categoria> categorias = (List<Categoria>) request.getAttribute("categorias");
+        
+        // debug categorias existentes
+        if (categorias != null) {
+            for (Categoria categoria : categorias) {
+                getServletContext().log("Categoria ID: " + categoria.getId() + " - Descrição: " + categoria.getDescricao());
+            }
+        } else {
+            getServletContext().log("Categorias não encontradas.");
+        }
     %>
     <form action="<%= request.getContextPath() %>/administrador/SalvarProduto" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
         <% if (produto != null) {%>
@@ -33,10 +42,11 @@
                 <option value="" disabled <%= (produto == null ? "selected" : "") %>>Selecione a categoria</option>
                 <% if (categorias != null) { 
                     for (Categoria categoria : categorias) { %>
-                        <option value="<%= categoria.getId() %>" <%= (produto != null && produto.getCategoria().getId() == categoria.getId() ? "selected" : "") %>>
+                        <option value="<%= categoria.getId() %>" 
+                            <%= (produto != null && produto.getCategoria() != null && 
+                                produto.getCategoria().getId() == categoria.getId()) ? "selected" : "" %>>
                             <%= categoria.getDescricao() %>
-                        </option>
-                    <% } 
+                        </option>                    <% } 
                 } %>
             </select>
             <div class="invalid-feedback">Por favor selecione a categoria</div>

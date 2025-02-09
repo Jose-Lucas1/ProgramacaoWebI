@@ -5,8 +5,33 @@ import static config.Constantes.JDBC_DRIVER;
 import static config.Constantes.JDBC_SENHA;
 import static config.Constantes.JDBC_URL;
 import static config.Constantes.JDBC_USUARIO;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CategoriaDAO {
+    
+    public List<Categoria> obterTodasCategorias() {
+        List<Categoria> categorias = new ArrayList<>();
+        try {
+            Class.forName(JDBC_DRIVER);
+            try (Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USUARIO, JDBC_SENHA);
+                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT id, descricao FROM categoria");
+                 ResultSet resultSet = preparedStatement.executeQuery()) {
+
+                while (resultSet.next()) {
+                    Categoria categoria = new Categoria();
+                    categoria.setId(resultSet.getInt("id"));
+                    categoria.setDescricao(resultSet.getString("descricao"));
+                    categorias.add(categoria);
+                }
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            ex.printStackTrace();
+        }
+ 
+        return categorias;
+    }
+
 
     public Categoria obterPorId(int id) {
         Categoria categoria = null;

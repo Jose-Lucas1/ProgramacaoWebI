@@ -188,6 +188,7 @@ public class ProdutoDAO {
      * @param preco
      * @param quantidade
      * @param foto
+     * @param categoriaId
      * @return
      */
     public boolean inserir(String descricao, double preco, int quantidade, FileItem foto, int categoriaId) {
@@ -252,6 +253,7 @@ public class ProdutoDAO {
      * @param quantidade
      * @param foto
      * @param id
+     * @param categoriaId
      * @return
      */
     public boolean atualizar(String descricao, double preco, int quantidade, FileItem foto, int id, int categoriaId) {
@@ -261,35 +263,40 @@ public class ProdutoDAO {
             Class.forName(JDBC_DRIVER);
             try (Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USUARIO, JDBC_SENHA)) {
                 connection.setAutoCommit(false);
-                try (PreparedStatement preparedStatement = connection.prepareStatement(
-                        "UPDATE produto SET descricao = ?, preco = ?, quantidade = ?, foto = ?, categoria_id = ? WHERE id = ?")) {
+
+                String sql;
+                if (foto != null && !foto.getName().isEmpty()) {
+                    sql = "UPDATE produto SET descricao = ?, preco = ?, quantidade = ?, foto = ?, categoria_id = ? WHERE id = ?";
+                } else {
+                    sql = "UPDATE produto SET descricao = ?, preco = ?, quantidade = ?, categoria_id = ? WHERE id = ?";
+                }
+
+                try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                     preparedStatement.setString(1, descricao);
                     preparedStatement.setDouble(2, preco);
                     preparedStatement.setInt(3, quantidade);
-                    String caminhoFoto = null;
-                    if (!foto.getName().equals("")) {
-                        caminhoFoto = Constantes.UPLOAD_FOTO_PRODUTO_DIRETORIO + File.separator + id + foto.getName().substring(foto.getName().lastIndexOf("."));
-                        preparedStatement.setString(4, caminhoFoto);
+
+                    int paramIndex = 4;
+                    if (foto != null && !foto.getName().isEmpty()) {
+                        String caminhoFoto = Constantes.UPLOAD_FOTO_PRODUTO_DIRETORIO + 
+                                           File.separator + id + 
+                                           foto.getName().substring(foto.getName().lastIndexOf("."));
+                        preparedStatement.setString(paramIndex++, caminhoFoto);
+
                         try {
-                            if (new File(produto.getFoto()).exists()) {
+                            if (produto.getFoto() != null && new File(produto.getFoto()).exists()) {
                                 new File(produto.getFoto()).delete();
                             }
                             foto.write(new File(caminhoFoto));
                         } catch (Exception ex) {
-                            sucesso = false;
-                        }
-                    } else {
-                        if (produto.getFoto() != null && produto.getFoto().trim().length() > 0) {
-                            preparedStatement.setString(4, produto.getFoto());
-                        } else {
-                            preparedStatement.setNull(4, Types.VARCHAR);
-                            if (new File(produto.getFoto()).exists()) {
-                                new File(produto.getFoto()).delete();
-                            }
+                            ex.printStackTrace();
+                            return false;
                         }
                     }
-                    preparedStatement.setInt(5, categoriaId); 
-                    preparedStatement.setInt(6, id);          
+
+                    preparedStatement.setInt(paramIndex++, categoriaId);
+                    preparedStatement.setInt(paramIndex, id);
+
                     sucesso = (preparedStatement.executeUpdate() == 1);
                     if (sucesso) {
                         connection.commit();

@@ -15,6 +15,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Foto</th>
                     <th scope="col">Descrição</th>
+                    <th scope="col">Categoria</th>
                     <th scope="col">Preço</th>
                     <th scope="col">Quantidade</th>
                     <th scope="col">&nbsp;</th>
@@ -33,6 +34,7 @@
                         <% } %>
                     </td>
                     <td><%= produto.getDescricao()%></td>
+                    <td><%= produto.getCategoria() != null ? produto.getCategoria().getDescricao() : ""%></td>
                     <td>R$ <%= Utils.formatarMoeda(produto.getPreco())%></td>
                     <td><%= produto.getQuantidade()%></td>
                     <td class="d-flex justify-content-end gap-2"><a href="<%= request.getContextPath() %>/administrador/FormProduto?id=<%= produto.getId() %>" role="button" class="btn btn-primary">Atualizar</a><a href="<%= request.getContextPath() %>/administrador/RemoverProduto?id=<%= produto.getId() %>" role="button" class="btn btn-danger">Remover</a></td>
