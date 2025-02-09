@@ -1,5 +1,7 @@
 package modelo.produto;
 
+import modelo.categoria.Categoria;
+
 /**
  *
  * @author Leonardo Oliveira Moreira
@@ -13,6 +15,7 @@ public class Produto {
     private double preco;
     private String foto;
     private int quantidade;
+    private Categoria categoria;
 
     public int getId() {
         return id;
@@ -53,5 +56,12 @@ public class Produto {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
+  
+    public Categoria getCategoria() {
+        return categoria;
+    }
     
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 }

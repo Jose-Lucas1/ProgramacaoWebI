@@ -1,9 +1,12 @@
+<%@page import="java.util.List"%>
 <%@page import="modelo.produto.Produto"%>
+<%@page import="modelo.categoria.Categoria"%>
 <%@include file="../../../cabecalho.jsp" %>
 <div class="w-50 m-auto">
     <h1 class="fw-bolder fs-4">Cadastro de Produtos</h1>
     <%
         Produto produto = (Produto) request.getAttribute("produto");
+        List<Categoria> categorias = (List<Categoria>) request.getAttribute("categorias"); // List of categories
     %>
     <form action="<%= request.getContextPath() %>/administrador/SalvarProduto" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
         <% if (produto != null) {%>
@@ -23,6 +26,20 @@
             <label for="quantidadeInput" class="form-label">Quantidade</label>
             <input type="text" class="form-control" id="quantidadeInput" name="quantidade" placeholder="Entre com a quantidade" value="<%= (produto == null ? "" : produto.getQuantidade())%>" required>
             <div class="invalid-feedback">Por favor digite a quantidade</div>
+        </div>
+        <div class="mb-3">
+            <label for="categoriaSelect" class="form-label">Categoria</label>
+            <select class="form-control" id="categoriaSelect" name="categoriaId" required>
+                <option value="" disabled <%= (produto == null ? "selected" : "") %>>Selecione a categoria</option>
+                <% if (categorias != null) { 
+                    for (Categoria categoria : categorias) { %>
+                        <option value="<%= categoria.getId() %>" <%= (produto != null && produto.getCategoria().getId() == categoria.getId() ? "selected" : "") %>>
+                            <%= categoria.getDescricao() %>
+                        </option>
+                    <% } 
+                } %>
+            </select>
+            <div class="invalid-feedback">Por favor selecione a categoria</div>
         </div>
         <div class="mb-3">
             <label for="fotoInput" class="form-label">Foto</label>

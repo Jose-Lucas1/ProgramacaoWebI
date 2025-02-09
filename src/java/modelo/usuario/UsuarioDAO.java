@@ -96,6 +96,7 @@ public class UsuarioDAO {
             }
         } catch (Exception ex) {
             sucesso = false;
+            ex.printStackTrace();
         }
         return sucesso;
     }

@@ -15,6 +15,7 @@ public class Usuario {
     private String login;
     private String senha;
     private boolean administrador;
+    private int categoriaId;
 
     public int getId() {
         return id;
@@ -70,6 +71,14 @@ public class Usuario {
 
     public void setAdministrador(boolean administrador) {
         this.administrador = administrador;
+    }
+    
+    public int getCategoriaId() {
+        return categoriaId;
+    }
+
+    public void setCategoriaId(int categoriaId) {
+        this.categoriaId = categoriaId;
     }
     
 }

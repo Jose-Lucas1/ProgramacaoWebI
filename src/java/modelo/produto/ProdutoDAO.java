@@ -9,6 +9,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
+import modelo.categoria.Categoria;
 import org.apache.tomcat.util.http.fileupload.FileItem;
 
 /**
@@ -28,7 +29,14 @@ public class ProdutoDAO {
         List<Produto> resultado = new ArrayList<>();
         try {
             Class.forName(JDBC_DRIVER);
-            try (Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USUARIO, JDBC_SENHA); Statement statement = connection.createStatement(); ResultSet resultSet = statement.executeQuery("SELECT id, descricao, preco, quantidade, foto FROM produto ORDER BY id")) {
+            try (Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USUARIO, JDBC_SENHA); 
+                 Statement statement = connection.createStatement(); 
+                 ResultSet resultSet = statement.executeQuery(
+                    "SELECT p.id, p.descricao, p.preco, p.quantidade, p.foto, p.categoria_id, c.descricao AS categoria_descricao " +
+                    "FROM produto p " +
+                    "JOIN categoria c ON p.categoria_id = c.id " +
+                    "ORDER BY p.id")) {
+
                 while (resultSet.next()) {
                     Produto produto = new Produto();
                     produto.setId(resultSet.getInt("id"));
@@ -36,14 +44,21 @@ public class ProdutoDAO {
                     produto.setPreco(resultSet.getDouble("preco"));
                     produto.setQuantidade(resultSet.getInt("quantidade"));
                     produto.setFoto(resultSet.getString("foto"));
+
+                    Categoria categoria = new Categoria();
+                    categoria.setId(resultSet.getInt("categoria_id"));
+                    categoria.setDescricao(resultSet.getString("categoria_descricao"));
+                    produto.setCategoria(categoria);
+
                     resultado.add(produto);
                 }
             }
         } catch (ClassNotFoundException | SQLException ex) {
-
+            ex.printStackTrace();
         }
         return resultado;
     }
+
 
     /**
      * Método utilizado para obter todos os produtos que existem em estoque
@@ -54,7 +69,15 @@ public class ProdutoDAO {
         List<Produto> resultado = new ArrayList<>();
         try {
             Class.forName(JDBC_DRIVER);
-            try (Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USUARIO, JDBC_SENHA); Statement statement = connection.createStatement(); ResultSet resultSet = statement.executeQuery("SELECT id, descricao, preco, quantidade, foto FROM produto WHERE quantidade > 0 ORDER BY id")) {
+            try (Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USUARIO, JDBC_SENHA); 
+                 Statement statement = connection.createStatement(); 
+                 ResultSet resultSet = statement.executeQuery(
+                    "SELECT p.id, p.descricao, p.preco, p.quantidade, p.foto, p.categoria_id, c.descricao AS categoria_descricao " +
+                    "FROM produto p " +
+                    "JOIN categoria c ON p.categoria_id = c.id " +
+                    "WHERE p.quantidade > 0 " +
+                    "ORDER BY p.id")) {
+
                 while (resultSet.next()) {
                     Produto produto = new Produto();
                     produto.setId(resultSet.getInt("id"));
@@ -62,14 +85,21 @@ public class ProdutoDAO {
                     produto.setPreco(resultSet.getDouble("preco"));
                     produto.setQuantidade(resultSet.getInt("quantidade"));
                     produto.setFoto(resultSet.getString("foto"));
+
+                    Categoria categoria = new Categoria();
+                    categoria.setId(resultSet.getInt("categoria_id"));
+                    categoria.setDescricao(resultSet.getString("categoria_descricao"));
+                    produto.setCategoria(categoria); 
+
                     resultado.add(produto);
                 }
             }
         } catch (ClassNotFoundException | SQLException ex) {
-
+            ex.printStackTrace();
         }
         return resultado;
     }
+
 
     /**
      * Método utilizado para obter todos os produtos que estão faltando em
@@ -81,7 +111,14 @@ public class ProdutoDAO {
         List<Produto> resultado = new ArrayList<>();
         try {
             Class.forName(JDBC_DRIVER);
-            try (Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USUARIO, JDBC_SENHA); Statement statement = connection.createStatement(); ResultSet resultSet = statement.executeQuery("SELECT id, descricao, preco, quantidade, foto FROM produto WHERE quantidade <= 0 ORDER BY id")) {
+            try (Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USUARIO, JDBC_SENHA); 
+                 Statement statement = connection.createStatement(); 
+                 ResultSet resultSet = statement.executeQuery(
+                    "SELECT p.id, p.descricao, p.preco, p.quantidade, p.foto, p.categoria_id, c.descricao AS categoria_descricao " +
+                    "FROM produto p " +
+                    "JOIN categoria c ON p.categoria_id = c.id " +
+                    "WHERE p.quantidade <= 0 ORDER BY p.id")) {
+
                 while (resultSet.next()) {
                     Produto produto = new Produto();
                     produto.setId(resultSet.getInt("id"));
@@ -89,11 +126,17 @@ public class ProdutoDAO {
                     produto.setPreco(resultSet.getDouble("preco"));
                     produto.setQuantidade(resultSet.getInt("quantidade"));
                     produto.setFoto(resultSet.getString("foto"));
+
+                    Categoria categoria = new Categoria();
+                    categoria.setId(resultSet.getInt("categoria_id"));
+                    categoria.setDescricao(resultSet.getString("categoria_descricao"));
+                    produto.setCategoria(categoria);
+
                     resultado.add(produto);
                 }
             }
         } catch (ClassNotFoundException | SQLException ex) {
-
+            ex.printStackTrace();
         }
         return resultado;
     }
@@ -108,21 +151,32 @@ public class ProdutoDAO {
         Produto produto = null;
         try {
             Class.forName(JDBC_DRIVER);
-            try (Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USUARIO, JDBC_SENHA); PreparedStatement preparedStatement = connection.prepareStatement("SELECT id, descricao, preco, quantidade, foto FROM produto WHERE id = ?")) {
+            try (Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USUARIO, JDBC_SENHA); 
+                 PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT p.id, p.descricao, p.preco, p.quantidade, p.foto, p.categoria_id, c.descricao AS categoria_descricao " +
+                    "FROM produto p " +
+                    "JOIN categoria c ON p.categoria_id = c.id " +
+                    "WHERE p.id = ?")) {
+
                 preparedStatement.setInt(1, id);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                    while (resultSet.next()) {
+                    if (resultSet.next()) {
                         produto = new Produto();
                         produto.setId(resultSet.getInt("id"));
                         produto.setDescricao(resultSet.getString("descricao"));
                         produto.setPreco(resultSet.getDouble("preco"));
                         produto.setQuantidade(resultSet.getInt("quantidade"));
                         produto.setFoto(resultSet.getString("foto"));
+
+                        Categoria categoria = new Categoria();
+                        categoria.setId(resultSet.getInt("categoria_id"));
+                        categoria.setDescricao(resultSet.getString("categoria_descricao"));
+                        produto.setCategoria(categoria);
                     }
                 }
             }
         } catch (ClassNotFoundException | SQLException ex) {
-
+            ex.printStackTrace();
         }
         return produto;
     }
@@ -136,25 +190,30 @@ public class ProdutoDAO {
      * @param foto
      * @return
      */
-    public boolean inserir(String descricao, double preco, int quantidade, FileItem foto) {
+    public boolean inserir(String descricao, double preco, int quantidade, FileItem foto, int categoriaId) {
         boolean sucesso = false;
         int generatedId = -1;
         try {
             Class.forName(JDBC_DRIVER);
             try (Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USUARIO, JDBC_SENHA)) {
                 connection.setAutoCommit(false);
-                try (PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO produto (descricao, preco, quantidade, foto) VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
+                try (PreparedStatement preparedStatement = connection.prepareStatement(
+                        "INSERT INTO produto (descricao, preco, quantidade, foto, categoria_id) VALUES (?, ?, ?, ?, ?)", 
+                        Statement.RETURN_GENERATED_KEYS)) {
                     preparedStatement.setString(1, descricao);
                     preparedStatement.setDouble(2, preco);
                     preparedStatement.setInt(3, quantidade);
                     preparedStatement.setNull(4, Types.VARCHAR);
+                    preparedStatement.setInt(5, categoriaId);
                     sucesso = (preparedStatement.executeUpdate() == 1);
+
                     try (ResultSet resultSet = preparedStatement.getGeneratedKeys()) {
                         if (resultSet.next()) {
                             generatedId = resultSet.getInt(1);
                         }
                     }
                 }
+
                 if (!sucesso) {
                     connection.rollback();
                 } else {
@@ -180,7 +239,7 @@ public class ProdutoDAO {
                 }
             }
         } catch (ClassNotFoundException | SQLException ex) {
-
+            ex.printStackTrace();
         }
         return sucesso;
     }
@@ -195,14 +254,15 @@ public class ProdutoDAO {
      * @param id
      * @return
      */
-    public boolean atualizar(String descricao, double preco, int quantidade, FileItem foto, int id) {
+    public boolean atualizar(String descricao, double preco, int quantidade, FileItem foto, int id, int categoriaId) {
         boolean sucesso = false;
         Produto produto = obter(id);
         try {
             Class.forName(JDBC_DRIVER);
             try (Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USUARIO, JDBC_SENHA)) {
                 connection.setAutoCommit(false);
-                try (PreparedStatement preparedStatement = connection.prepareStatement("UPDATE produto SET descricao = ?, preco = ?, quantidade = ?, foto = ? WHERE id = ?")) {
+                try (PreparedStatement preparedStatement = connection.prepareStatement(
+                        "UPDATE produto SET descricao = ?, preco = ?, quantidade = ?, foto = ?, categoria_id = ? WHERE id = ?")) {
                     preparedStatement.setString(1, descricao);
                     preparedStatement.setDouble(2, preco);
                     preparedStatement.setInt(3, quantidade);
@@ -228,7 +288,8 @@ public class ProdutoDAO {
                             }
                         }
                     }
-                    preparedStatement.setInt(5, id);
+                    preparedStatement.setInt(5, categoriaId); 
+                    preparedStatement.setInt(6, id);          
                     sucesso = (preparedStatement.executeUpdate() == 1);
                     if (sucesso) {
                         connection.commit();
@@ -238,10 +299,11 @@ public class ProdutoDAO {
                 }
             }
         } catch (ClassNotFoundException | SQLException ex) {
-
+            ex.printStackTrace();
         }
         return sucesso;
     }
+
 
     /**
      * Método utilizado para remover um produto existente
