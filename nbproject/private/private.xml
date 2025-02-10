@@ -3,15 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerceV9/src/java/modelo/produto/Produto.java</file>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerceV9/src/java/config/Constantes.java</file>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerceV9/src/java/controle/produto/MostrarFotoProdutoServlet.java</file>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerceV9/src/java/controle/produto/SalvarProdutoServlet.java</file>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerceV9/src/java/modelo/usuario/UsuarioDAO.java</file>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerceV9/src/java/modelo/produto/ProdutoDAO.java</file>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerceV9/src/java/modelo/usuario/Usuario.java</file>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerceV9/src/java/utils/Utils.java</file>
-            <file>file:/C:/Users/josep/Documents/NetBeansProjects/smdecommerceV9/web/index.jsp</file>
+            <file>file:/C:/Users/josep/Documents/NetBeansProjects/ProgramacaoWebICategorias/ProgramacaoWebI/src/java/modelo/categoria/Categoria.java</file>
+            <file>file:/C:/Users/josep/Documents/NetBeansProjects/ProgramacaoWebICategorias/ProgramacaoWebI/src/java/controle/categoria/SalvarCategoriaServlet.java</file>
+            <file>file:/C:/Users/josep/Documents/NetBeansProjects/ProgramacaoWebICategorias/ProgramacaoWebI/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/josep/Documents/NetBeansProjects/ProgramacaoWebICategorias/ProgramacaoWebI/src/java/controle/produto/ListarProdutosServlet.java</file>
+            <file>file:/C:/Users/josep/Documents/NetBeansProjects/ProgramacaoWebICategorias/ProgramacaoWebI/src/java/controle/categoria/ListarCategoriaServlet.java</file>
+            <file>file:/C:/Users/josep/Documents/NetBeansProjects/ProgramacaoWebICategorias/ProgramacaoWebI/web/WEB-INF/jsp/produto/listar.jsp</file>
+            <file>file:/C:/Users/josep/Documents/NetBeansProjects/ProgramacaoWebICategorias/ProgramacaoWebI/src/java/controle/categoria/FormCategoriaServlet.java</file>
+            <file>file:/C:/Users/josep/Documents/NetBeansProjects/ProgramacaoWebICategorias/ProgramacaoWebI/web/WEB-INF/jsp/categoria/listar.jsp</file>
+            <file>file:/C:/Users/josep/Documents/NetBeansProjects/ProgramacaoWebICategorias/ProgramacaoWebI/web/WEB-INF/jsp/categoria/form.jsp</file>
+            <file>file:/C:/Users/josep/Documents/NetBeansProjects/ProgramacaoWebICategorias/ProgramacaoWebI/web/cabecalho.jsp</file>
+            <file>file:/C:/Users/josep/Documents/NetBeansProjects/ProgramacaoWebICategorias/ProgramacaoWebI/src/java/modelo/produto/ProdutoDAO.java</file>
         </group>
     </open-files>
 </project-private>

@@ -41,6 +41,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="<%= request.getContextPath() %>/administrador/ListarProdutos">Cadastro de Produtos</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<%= request.getContextPath() %>/administrador/ListarCategorias">Cadastro de Categorias</a>
+                                </li>
                                 <% } %>
                                 <% if (usuario != null && usuario instanceof Usuario && usuario.isAdministrador()) { %>
                                 <li class="nav-item">

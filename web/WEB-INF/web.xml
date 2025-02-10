@@ -43,6 +43,22 @@
         <servlet-class>controle.produto.ListarProdutosServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ListarCategoriaServlet</servlet-name>
+        <servlet-class>controle.categoria.ListarCategoriaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FormCategoriaServlet</servlet-name>
+        <servlet-class>controle.categoria.FormCategoriaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RemoverCategoriaServlet</servlet-name>
+        <servlet-class>controle.categoria.RemoverCategoriaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SalvarCategoriaServlet</servlet-name>
+        <servlet-class>controle.categoria.SalvarCategoriaServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>FormProdutoServlet</servlet-name>
         <servlet-class>controle.produto.FormProdutoServlet</servlet-class>
     </servlet>
@@ -101,6 +117,22 @@
     <servlet-mapping>
         <servlet-name>ListarProdutosServlet</servlet-name>
         <url-pattern>/administrador/ListarProdutos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarCategoriaServlet</servlet-name>
+        <url-pattern>/administrador/ListarCategorias</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FormCategoriaServlet</servlet-name>
+        <url-pattern>/administrador/FormCategoria</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoverCategoriaServlet</servlet-name>
+        <url-pattern>/administrador/RemoverCategoria</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SalvarCategoriaServlet</servlet-name>
+        <url-pattern>/administrador/SalvarCategoria</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FormProdutoServlet</servlet-name>

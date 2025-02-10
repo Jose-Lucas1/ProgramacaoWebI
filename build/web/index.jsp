@@ -23,6 +23,7 @@
             <div class="card-body">
                 <h5 class="card-title"><%= produto.getDescricao()%></h5>
                 <p class="card-text">Preço: <%= produto.getPreco()%></p>
+                <button type="button" class="btn btn-secondary"><%= produto.getCategoria() != null ? produto.getCategoria().getDescricao() : ""%></button>
             </div>
             <div class="card-footer">
                 <small class="text-muted"><a role="button" class="btn btn-primary" href="<%= request.getContextPath() %>/AdicionarItemCarrinho?produtoId=<%= produto.getId()%>&quantidade=1">Adicionar ao carrinho</a></small>
