@@ -47,7 +47,15 @@
                                 <% } %>
                                 <% if (usuario != null && usuario instanceof Usuario && usuario.isAdministrador()) { %>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<%= request.getContextPath() %>/administrador/RelatorioProdutosFaltantesEmEstoque">Produtos Faltantes em Estoque</a>
+                                    <a class="nav-link" href="<%= request.getContextPath() %>/SelecionarPeriodoParaRelatorioServlet">Relatórios Gerais</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<%= request.getContextPath() %>/ListarCompraAdminServlet">Compras dos Clientes</a>
+                                </li>
+                                <% } %>
+                                <% if (usuario != null && usuario instanceof Usuario && !usuario.isAdministrador()) { %>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<%= request.getContextPath() %>/ListarCompraServlet">Histórico de Compras</a>
                                 </li>
                                 <% } %>
                                 <%

@@ -117,7 +117,7 @@ public class ProdutoDAO {
                     "SELECT p.id, p.descricao, p.preco, p.quantidade, p.foto, p.categoria_id, c.descricao AS categoria_descricao " +
                     "FROM produto p " +
                     "JOIN categoria c ON p.categoria_id = c.id " +
-                    "WHERE p.quantidade <= 0 ORDER BY p.id")) {
+                    "WHERE p.quantidade <= 0 ORDER BY descricao ASC")) {
 
                 while (resultSet.next()) {
                     Produto produto = new Produto();
@@ -310,6 +310,27 @@ public class ProdutoDAO {
         }
         return sucesso;
     }
+    
+    
+    
+    public boolean atualizarQuantidadeProduto(int id, int novaQuantidade) {
+    boolean sucesso = false;
+    String sql = "UPDATE produto SET quantidade = ? WHERE id = ?";
+
+    try (Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USUARIO, JDBC_SENHA);
+         PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+        preparedStatement.setInt(1, novaQuantidade);
+        preparedStatement.setInt(2, id);
+
+        sucesso = (preparedStatement.executeUpdate() == 1);
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    }
+
+    return sucesso;
+    }
+
 
 
     /**

@@ -90,6 +90,26 @@
         <servlet-name>atualizarDadosServlet</servlet-name>
         <servlet-class>controle.usuario.atualizarDadosServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InserirCompraServlet</servlet-name>
+        <servlet-class>controle.compra.InserirCompraServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarCompraServlet</servlet-name>
+        <servlet-class>controle.compra.ListarCompraServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarCompraAdminServlet</servlet-name>
+        <servlet-class>controle.compra.ListarCompraAdminServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RemoverCompraServlet</servlet-name>
+        <servlet-class>controle.compra.RemoverCompraServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SelecionarPeriodoParaRelatorioServlet</servlet-name>
+        <servlet-class>controle.relatorios.SelecionarPeriodoParaRelatorioServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InicioServlet</servlet-name>
         <url-pattern>/Inicio</url-pattern>
@@ -161,6 +181,26 @@
     <servlet-mapping>
         <servlet-name>atualizarDadosServlet</servlet-name>
         <url-pattern>/atualizarDadosServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InserirCompraServlet</servlet-name>
+        <url-pattern>/InserirCompraServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarCompraServlet</servlet-name>
+        <url-pattern>/ListarCompraServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarCompraAdminServlet</servlet-name>
+        <url-pattern>/ListarCompraAdminServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoverCompraServlet</servlet-name>
+        <url-pattern>/RemoverCompraServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SelecionarPeriodoParaRelatorioServlet</servlet-name>
+        <url-pattern>/SelecionarPeriodoParaRelatorioServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

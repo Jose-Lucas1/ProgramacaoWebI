@@ -46,6 +46,36 @@ public class UsuarioDAO {
         return usuario;
     }
     
+    public Usuario obterPorId(int id) {
+    Usuario usuario = null;
+    try {
+        Class.forName(JDBC_DRIVER);
+        try (Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USUARIO, JDBC_SENHA);
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM usuario WHERE id = ?")) {
+             
+            preparedStatement.setInt(1, id);
+            
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    usuario = new Usuario();
+                    usuario.setId(resultSet.getInt("id"));
+                    usuario.setNome(resultSet.getString("nome"));
+                    usuario.setEndereco(resultSet.getString("endereco"));
+                    usuario.setEmail(resultSet.getString("email"));
+                    usuario.setLogin(resultSet.getString("login"));
+                    usuario.setSenha(resultSet.getString("senha"));
+                    usuario.setAdministrador(resultSet.getBoolean("administrador"));
+                }
+            }
+        }
+    } catch (ClassNotFoundException | SQLException ex) {
+        ex.printStackTrace();
+        usuario = null;
+    }
+    return usuario;
+    }
+
+    
     /**
      * Método utilizado para identificar um usuário pelo login e senha
      *

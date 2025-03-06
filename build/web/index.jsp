@@ -41,6 +41,7 @@
         }
         if (itensCarrinhoCompras != null && !itensCarrinhoCompras.isEmpty()) {
             double totalCarrinhoCompras = 0;
+            int totalDeProdutosComprados = 0;
     %>
     <div class="clearfix"></div>
     <h1 class="fw-bolder fs-4 mt-3">Carrinho de Compras</h1>
@@ -75,12 +76,24 @@
                 </tr>
                 <%
                         totalCarrinhoCompras += (item.getQuantidade() * item.getProduto().getPreco());
+                        totalDeProdutosComprados += item.getQuantidade();
                     }
                 %>
             <tbody>
         </table>
     </div>
     <h1 class="fw-bolder fs-4 mb-3">Total R$: <%= Utils.formatarMoeda(totalCarrinhoCompras) %></h1>
+    <% if (usuario != null && usuario instanceof Usuario && !usuario.isAdministrador()) {
+           System.out.println("3");
+           session.setAttribute("itensCarrinhoCompras", itensCarrinhoCompras);
+    %>
+    <form action="<%= request.getContextPath() %>/InserirCompraServlet" method="post">
+    <input type="hidden" name="totalCarrinhoCompras" value="<%= totalCarrinhoCompras %>">
+    <input type="hidden" name="totalDeProdutosComprados" value="<%= totalDeProdutosComprados %>">
+    <button type="submit" class="btn btn-success btn-lg">Comprar</button>
+    </form>
+    <% } %>
+
     <%
         }
     %>
